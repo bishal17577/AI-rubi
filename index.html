@@ -26,42 +26,45 @@
             --text-color: #e0e0e0;
             --border-color: #444;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: var(--background-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
-        .app-container { padding: 15px; padding-bottom: 100px; max-width: 700px; margin: auto; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: var(--background-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; font-size: 14px; }
+        .app-container { padding: 12px; padding-bottom: 90px; max-width: 700px; margin: auto; }
         .page { display: none; text-align: center; }
         .page.active { display: block; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); transition: background-color 0.3s; }
-        h2, h3 { color: var(--text-color); }
+        .card { background: var(--card-bg); border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: var(--shadow); transition: background-color 0.3s; }
+        h2 { font-size: 1.4em; }
+        h3 { font-size: 1.2em; }
         nav { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--card-bg); display: flex; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000; justify-content: space-around; }
-        nav button { background: none; border: none; color: var(--secondary-color); padding: 8px 4px; font-size: 9px; cursor: pointer; flex-grow: 1; transition: color 0.3s; max-width: 20%; }
+        nav button { background: none; border: none; color: var(--secondary-color); padding: 6px 2px; font-size: 9px; cursor: pointer; flex-grow: 1; transition: color 0.3s; max-width: 20%; }
         nav button.active { color: var(--primary-color); }
-        nav i { font-size: 18px; display: block; margin-bottom: 4px; }
-        video { max-width: 100%; width: 300px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #e9ecef; }
-        input, textarea, select { width: calc(100% - 22px); padding: 8px 10px; font-size: 14px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--background-color); color: var(--text-color); }
-        .btn { padding: 8px 12px; font-size: 14px; margin: 4px; border-radius: 8px; border: none; cursor: pointer; color: white; transition: background-color 0.3s, transform 0.1s; }
+        nav i { font-size: 16px; display: block; margin-bottom: 4px; }
+        video { max-width: 100%; width: 280px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #e9ecef; }
+        input, textarea, select { width: calc(100% - 20px); padding: 8px 9px; font-size: 13px; margin-bottom: 8px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--background-color); color: var(--text-color); }
+        .btn { padding: 6px 10px; font-size: 13px; margin: 2px; border-radius: 6px; border: none; cursor: pointer; color: white; transition: background-color 0.3s, transform 0.1s; }
         .btn:active { transform: scale(0.98); }
         .btn-primary { background-color: var(--primary-color); }
         .btn-primary:hover { background-color: var(--primary-hover); }
         .btn-secondary { background-color: var(--secondary-color); }
         .btn-danger { background-color: var(--danger-color); }
         .btn-success { background-color: var(--success-color); }
+        #generator-page .btn-primary[onclick*="generateQR"] { padding: 10px !important; font-size: 15px !important; }
         #qr-output-wrapper { position: relative; display: inline-block; margin-top: 15px; }
         #qr-output-frame { border: 10px solid #333; padding: 10px; display: none; border-image-slice: 1; }
-        #qr-output-caption { display: none; font-style: italic; margin-top: 10px; }
+        #qr-output-caption { display: none; font-style: italic; margin-top: 8px; font-size: 12px; }
         .scanner-controls { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; }
-        .scanner-controls .btn i { margin-right: 5px; }
+        .scanner-controls .btn i { margin-right: 4px; }
         .history-entry { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding: 8px 5px; text-align: left; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        .form-group { margin-bottom: 12px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 4px; font-weight: bold; font-size: 13px; }
         .form-group.inline { display: flex; justify-content: space-between; align-items: center; }
         #pin-lock-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        #avatar-preview { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); cursor: pointer; }
+        #avatar-preview { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); cursor: pointer; }
         .generator-field { display: none; }
         .generator-field.active { display: block; animation: fadeIn 0.5s; }
-        .fieldset-toggle { border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-top: 15px; }
-        .fieldset-toggle legend { cursor: pointer; font-weight: bold; }
+        .fieldset-toggle { border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-top: 15px; }
+        .fieldset-toggle legend { cursor: pointer; font-weight: bold; font-size: 14px; }
         .fieldset-toggle .fieldset-content { display: none; }
+        #form-result { margin-top: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -229,10 +232,30 @@
             <h2><i class="fas fa-user-cog"></i> Settings & Profile</h2>
             <div class="card">
                 <h3><i class="fas fa-user-circle"></i> Profile</h3>
-                <img id="avatar-preview" src="https://via.placeholder.com/80" alt="Avatar" onclick="document.getElementById('avatar-upload').click();">
-                <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
-                <div class="form-group"><label for="profile-name">Your Name</label><input type="text" id="profile-name"></div>
-                <button class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+                <!-- MODIFIED: Wrapped profile section in a form for easier submission -->
+                <form id="profileForm">
+                    <img id="avatar-preview" src="https://via.placeholder.com/80" alt="Avatar" onclick="document.getElementById('avatar-upload').click();">
+                    <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
+                    
+                    <div class="form-group">
+                        <label for="profile-name">Your Name</label>
+                        <input type="text" id="profile-name" required>
+                    </div>
+                    <!-- ADDED: Phone and Address fields -->
+                    <div class="form-group">
+                        <label for="profile-phone">Phone Number</label>
+                        <input type="tel" id="profile-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-address">Address</label>
+                        <input type="text" id="profile-address" required>
+                    </div>
+
+                    <!-- MODIFIED: Changed button to type="submit" and removed onclick -->
+                    <button type="submit" class="btn btn-primary">Save Profile & Submit</button>
+                    <!-- ADDED: Div to show form submission result -->
+                    <div id="form-result"></div>
+                </form>
                 <hr style="margin: 15px 0; border-color: var(--border-color);">
                 <button class="btn btn-primary" onclick="connectWallet()">Connect MetaMask</button>
                 <p id="wallet-address" style="font-size:12px; word-break:break-all;">Not Connected</p>
@@ -274,6 +297,10 @@
     <!-- Main Application Logic -->
     <script>
     // --- APP INITIALIZATION & STATE MANAGEMENT ---
+
+    // INTEGRATED: Web3Forms Access Key
+    const WEB3FORMS_ACCESS_KEY = "1f9d8d2c-a5f8-471e-a027-6f1a0287cafc";
+
     let html5QrCode; 
     const appState = {
         activePage: 'scanner',
@@ -291,6 +318,8 @@
             pinLock: '',
             profile: {
                 name: '',
+                phone: '', // Added
+                address: '', // Added
                 avatar: '',
                 walletAddress: ''
             },
@@ -327,6 +356,10 @@
     function initializeApp() {
         showPage(appState.activePage);
         applyTheme(appState.settings.theme);
+        
+        // INTEGRATED: Event listener for profile form submission
+        document.addEventListener('submit', handleFormSubmission);
+        
         document.addEventListener('input', (e) => {
             if (appState.activePage === 'generator' && e.target.closest('#generator-fields, #design-fieldset, #security-fieldset')) {
                 generateQR(true);
@@ -336,6 +369,11 @@
 
     // --- STATE & SETTINGS ---
     function saveState() {
+        // Sync appState with localStorage before saving
+        appState.settings.profile.name = localStorage.getItem('profileName') || '';
+        appState.settings.profile.phone = localStorage.getItem('profilePhone') || '';
+        appState.settings.profile.address = localStorage.getItem('profileAddress') || '';
+        appState.settings.profile.avatar = localStorage.getItem('profileAvatar') || '';
         localStorage.setItem('qrAppState', JSON.stringify(appState));
     }
 
@@ -343,13 +381,17 @@
         const savedState = localStorage.getItem('qrAppState');
         if (savedState) {
             const parsed = JSON.parse(savedState);
-            Object.assign(appState.settings, parsed.settings);
-            Object.assign(appState, {
-                scanHistory: parsed.scanHistory || [],
-                generationHistory: parsed.generationHistory || [],
-                web3Submissions: parsed.web3Submissions || []
-            });
+            Object.assign(appState, parsed); // Load entire state
+            // Ensure profile object exists
+            if (!appState.settings.profile) {
+                appState.settings.profile = {};
+            }
         }
+        // Also load individual profile items for direct use
+        appState.settings.profile.name = localStorage.getItem('profileName') || '';
+        appState.settings.profile.phone = localStorage.getItem('profilePhone') || '';
+        appState.settings.profile.address = localStorage.getItem('profileAddress') || '';
+        appState.settings.profile.avatar = localStorage.getItem('profileAvatar') || '';
     }
 
     // --- PAGE ROUTING & RENDERING ---
@@ -358,26 +400,17 @@
         const pageContainer = document.getElementById('page-container');
         const template = document.getElementById(`${pageId}-page-template`);
         if (!template) return;
-
         if (html5QrCode && html5QrCode.isScanning) stopScanner();
-
         pageContainer.innerHTML = template.innerHTML;
-
-        // *** FIX IS HERE: Add the .active class to the newly injected page element ***
         const newPage = pageContainer.querySelector('.page');
-        if (newPage) {
-            newPage.classList.add('active');
-        }
-
+        if (newPage) newPage.classList.add('active');
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
         document.getElementById(`nav-${pageId}`).classList.add('active');
-
         if (pageId === 'scanner') initScannerPage();
         if (pageId === 'generator') initGeneratorPage();
         if (pageId === 'history') renderGenerationHistory();
         if (pageId === 'analytics') renderAnalyticsPage();
         if (pageId === 'settings') initSettingsPage();
-
         saveState();
     }
     
@@ -411,15 +444,12 @@
         const copyBtn = document.getElementById('copy-result-btn');
         copyBtn.style.display = 'inline-block';
         copyBtn.onclick = () => copyToClipboard(decodedText);
-        
         if (appState.settings.soundOnScan) new Audio('https://cdn.jsdelivr.net/gh/eurisk/eurisk.github.io@main/qr-scan-sound.mp3').play();
         if (appState.settings.vibrateOnScan && navigator.vibrate) navigator.vibrate(200);
-
         appState.scanHistory.unshift({ text: decodedText, date: new Date().toLocaleString() });
         if (appState.scanHistory.length > 50) appState.scanHistory.pop();
         renderScanHistory();
         saveState();
-
         if (appState.settings.autoOpenUrls && (decodedText.startsWith('http://') || decodedText.startsWith('https://'))) {
             window.open(decodedText, '_blank');
         }
@@ -432,7 +462,6 @@
             const track = html5QrCode.getRunningTrack();
             if (!track) return;
             const capabilities = track.getCapabilities();
-
             if (capabilities.torch) {
                 const flashlightBtn = document.getElementById('flashlight-btn');
                 flashlightBtn.style.display = 'inline-block';
@@ -469,227 +498,37 @@
         });
     }
 
-    // --- GENERATOR FEATURES ---
-    function initGeneratorPage() {
-        const typeSelector = document.getElementById('qr-type-selector');
-        typeSelector.value = appState.settings.defaultQrType;
-        showGeneratorFields(typeSelector.value);
-        generateQR(true);
-    }
+    // --- GENERATOR FEATURES --- (Unchanged)
+    function initGeneratorPage() { const typeSelector = document.getElementById('qr-type-selector'); typeSelector.value = appState.settings.defaultQrType; showGeneratorFields(typeSelector.value); generateQR(true); }
+    function showGeneratorFields(type) { document.querySelectorAll('.generator-field').forEach(f => f.classList.remove('active')); document.getElementById(`field-${type}`).classList.add('active'); }
+    function getQrData() { const type = document.getElementById('qr-type-selector').value; let data = ''; try { switch (type) { case 'text': data = document.getElementById('text-input').value; break; case 'url': data = document.getElementById('url-input').value; break; case 'vcard': data = `BEGIN:VCARD\nVERSION:3.0\nN:${document.getElementById('vcard-lname').value};${document.getElementById('vcard-fname').value}\nFN:${document.getElementById('vcard-fname').value} ${document.getElementById('vcard-lname').value}\nORG:${document.getElementById('vcard-org').value}\nTITLE:${document.getElementById('vcard-title').value}\nTEL;TYPE=WORK,VOICE:${document.getElementById('vcard-tel').value}\nEMAIL:${document.getElementById('vcard-email').value}\nEND:VCARD`; break; case 'wifi': const security = document.getElementById('wifi-security').value; data = `WIFI:T:${security};S:${document.getElementById('wifi-ssid').value};P:${document.getElementById('wifi-pass').value};H:${security === 'nopass' ? 'true' : 'false'};`; break; case 'email': data = `mailto:${document.getElementById('email-to').value}?subject=${encodeURIComponent(document.getElementById('email-subject').value)}&body=${encodeURIComponent(document.getElementById('email-body').value)}`; break; case 'sms': data = `smsto:${document.getElementById('sms-to').value}:${document.getElementById('sms-body').value}`; break; case 'event': const start = new Date(document.getElementById('event-start').value).toISOString().replace(/-|:|\.\d{3}/g, ''); const end = new Date(document.getElementById('event-end').value).toISOString().replace(/-|:|\.\d{3}/g, ''); data = `BEGIN:VEVENT\nSUMMARY:${document.getElementById('event-title').value}\nDTSTART:${start}\nDTEND:${end}\nLOCATION:${document.getElementById('event-location').value}\nEND:VEVENT`; break; case 'geo': data = `geo:${document.getElementById('geo-lat').value},${document.getElementById('geo-lon').value}`; break; case 'phone': data = `tel:${document.getElementById('phone-number').value}`; break; case 'whatsapp': data = `https://wa.me/${document.getElementById('wa-number').value}?text=${encodeURIComponent(document.getElementById('wa-text').value)}`; break; case 'payment': data = document.getElementById('payment-data').value; break; case 'crypto': data = `${document.getElementById('crypto-coin').value}:${document.getElementById('crypto-address').value}`; break; } } catch (e) { console.error("Error getting QR data:", e); } return data; }
+    function generateQR(isPreview = false) { let data = getQrData(); const qrOutput = document.getElementById("qr-output"); if (!data || !qrOutput) { if(qrOutput) qrOutput.innerHTML = ''; appState.qrCodeInstance = null; return; } if (document.getElementById('encrypt-qr')?.checked) { const pass = document.getElementById('encrypt-pass').value; if (pass) { data = 'encrypted_qr_data:' + CryptoJS.AES.encrypt(data, pass).toString(); } } const useGradient = document.getElementById('qr-color-dark').value !== document.getElementById('qr-color-gradient').value; const options = { width: 300, height: 300, data: data, dotsOptions: { type: document.getElementById('qr-dots-style').value, color: useGradient ? undefined : document.getElementById('qr-color-dark').value, gradient: useGradient ? { type: 'linear', rotation: 0, colorStops: [ { offset: 0, color: document.getElementById('qr-color-dark').value }, { offset: 1, color: document.getElementById('qr-color-gradient').value } ] } : undefined }, backgroundOptions: { color: document.getElementById('qr-color-light').value }, imageOptions: { crossOrigin: "anonymous", margin: 5 }, cornersSquareOptions: { type: document.getElementById('qr-corners-style').value }, cornersDotOptions: { type: 'dot' } }; const logoFile = document.getElementById('qr-logo-file').files[0]; if (logoFile) { options.image = URL.createObjectURL(logoFile); } qrOutput.innerHTML = ''; appState.qrCodeInstance = new QRCodeStyling(options); appState.qrCodeInstance.append(qrOutput); const wrapper = document.getElementById('qr-output-wrapper'); const frame = document.getElementById('qr-output-frame'); const caption = document.getElementById('qr-output-caption'); if (document.getElementById('qr-frame-toggle')?.checked) { frame.style.display = 'block'; frame.style.borderColor = document.getElementById('qr-frame-color').value; if(!frame.contains(qrOutput)) { wrapper.prepend(frame); frame.appendChild(qrOutput); } } else { if(frame) frame.style.display = 'none'; if(!wrapper.contains(qrOutput)) wrapper.appendChild(qrOutput); } if(document.getElementById('qr-caption-toggle')?.checked) { caption.style.display = 'block'; caption.textContent = document.getElementById('qr-caption-text').value; } else { if(caption) caption.style.display = 'none'; } if (!isPreview) { appState.generationHistory.unshift({ type: document.getElementById('qr-type-selector').value, data: getQrData(), date: new Date().toLocaleString() }); saveState(); document.getElementById('web3-section').style.display = 'block'; } }
+    async function downloadQR(format) { if (!appState.qrCodeInstance) return; const name = `qr-code`; if (format === 'pdf') { const { jsPDF } = window.jspdf; const doc = new jsPDF(); const dataUrl = await appState.qrCodeInstance.toDataUrl('png'); doc.addImage(dataUrl, 'PNG', 15, 40, 180, 180); doc.save(`${name}.pdf`); } else { appState.qrCodeInstance.download({ name: name, extension: format }); } }
 
-    function showGeneratorFields(type) {
-        document.querySelectorAll('.generator-field').forEach(f => f.classList.remove('active'));
-        document.getElementById(`field-${type}`).classList.add('active');
-    }
-
-    function getQrData() {
-        const type = document.getElementById('qr-type-selector').value;
-        let data = '';
-        try {
-            switch (type) {
-                case 'text': data = document.getElementById('text-input').value; break;
-                case 'url': data = document.getElementById('url-input').value; break;
-                case 'vcard':
-                    data = `BEGIN:VCARD\nVERSION:3.0\nN:${document.getElementById('vcard-lname').value};${document.getElementById('vcard-fname').value}\nFN:${document.getElementById('vcard-fname').value} ${document.getElementById('vcard-lname').value}\nORG:${document.getElementById('vcard-org').value}\nTITLE:${document.getElementById('vcard-title').value}\nTEL;TYPE=WORK,VOICE:${document.getElementById('vcard-tel').value}\nEMAIL:${document.getElementById('vcard-email').value}\nEND:VCARD`;
-                    break;
-                case 'wifi':
-                    const security = document.getElementById('wifi-security').value;
-                    data = `WIFI:T:${security};S:${document.getElementById('wifi-ssid').value};P:${document.getElementById('wifi-pass').value};H:${security === 'nopass' ? 'true' : 'false'};`;
-                    break;
-                case 'email':
-                    data = `mailto:${document.getElementById('email-to').value}?subject=${encodeURIComponent(document.getElementById('email-subject').value)}&body=${encodeURIComponent(document.getElementById('email-body').value)}`;
-                    break;
-                case 'sms':
-                    data = `smsto:${document.getElementById('sms-to').value}:${document.getElementById('sms-body').value}`;
-                    break;
-                case 'event':
-                    const start = new Date(document.getElementById('event-start').value).toISOString().replace(/-|:|\.\d{3}/g, '');
-                    const end = new Date(document.getElementById('event-end').value).toISOString().replace(/-|:|\.\d{3}/g, '');
-                    data = `BEGIN:VEVENT\nSUMMARY:${document.getElementById('event-title').value}\nDTSTART:${start}\nDTEND:${end}\nLOCATION:${document.getElementById('event-location').value}\nEND:VEVENT`;
-                    break;
-                case 'geo':
-                    data = `geo:${document.getElementById('geo-lat').value},${document.getElementById('geo-lon').value}`;
-                    break;
-                case 'phone':
-                    data = `tel:${document.getElementById('phone-number').value}`;
-                    break;
-                case 'whatsapp':
-                    data = `https://wa.me/${document.getElementById('wa-number').value}?text=${encodeURIComponent(document.getElementById('wa-text').value)}`;
-                    break;
-                case 'payment':
-                    data = document.getElementById('payment-data').value;
-                    break;
-                case 'crypto':
-                    data = `${document.getElementById('crypto-coin').value}:${document.getElementById('crypto-address').value}`;
-                    break;
-            }
-        } catch (e) { console.error("Error getting QR data:", e); }
-        return data;
-    }
-
-    function generateQR(isPreview = false) {
-        let data = getQrData();
-        const qrOutput = document.getElementById("qr-output");
-        if (!data || !qrOutput) {
-            if(qrOutput) qrOutput.innerHTML = '';
-            appState.qrCodeInstance = null;
-            return;
-        }
-
-        if (document.getElementById('encrypt-qr')?.checked) {
-            const pass = document.getElementById('encrypt-pass').value;
-            if (pass) {
-                data = 'encrypted_qr_data:' + CryptoJS.AES.encrypt(data, pass).toString();
-            }
-        }
-        
-        const useGradient = document.getElementById('qr-color-dark').value !== document.getElementById('qr-color-gradient').value;
-        const options = {
-            width: 300, height: 300, data: data,
-            dotsOptions: {
-                type: document.getElementById('qr-dots-style').value,
-                color: useGradient ? undefined : document.getElementById('qr-color-dark').value,
-                gradient: useGradient ? {
-                    type: 'linear',
-                    rotation: 0,
-                    colorStops: [
-                        { offset: 0, color: document.getElementById('qr-color-dark').value },
-                        { offset: 1, color: document.getElementById('qr-color-gradient').value }
-                    ]
-                } : undefined
-            },
-            backgroundOptions: { color: document.getElementById('qr-color-light').value },
-            imageOptions: { crossOrigin: "anonymous", margin: 5 },
-            cornersSquareOptions: { type: document.getElementById('qr-corners-style').value },
-            cornersDotOptions: { type: 'dot' }
-        };
-
-        const logoFile = document.getElementById('qr-logo-file').files[0];
-        if (logoFile) {
-             options.image = URL.createObjectURL(logoFile);
-        }
-        
-        qrOutput.innerHTML = '';
-        appState.qrCodeInstance = new QRCodeStyling(options);
-        appState.qrCodeInstance.append(qrOutput);
-        
-        const wrapper = document.getElementById('qr-output-wrapper');
-        const frame = document.getElementById('qr-output-frame');
-        const caption = document.getElementById('qr-output-caption');
-        
-        if (document.getElementById('qr-frame-toggle')?.checked) {
-            frame.style.display = 'block';
-            frame.style.borderColor = document.getElementById('qr-frame-color').value;
-            if(!frame.contains(qrOutput)) {
-                wrapper.prepend(frame);
-                frame.appendChild(qrOutput);
-            }
-        } else {
-            if(frame) frame.style.display = 'none';
-            if(!wrapper.contains(qrOutput)) wrapper.appendChild(qrOutput);
-        }
-        if(document.getElementById('qr-caption-toggle')?.checked) {
-            caption.style.display = 'block';
-            caption.textContent = document.getElementById('qr-caption-text').value;
-        } else {
-            if(caption) caption.style.display = 'none';
-        }
-
-        if (!isPreview) {
-            appState.generationHistory.unshift({ type: document.getElementById('qr-type-selector').value, data: getQrData(), date: new Date().toLocaleString() });
-            saveState();
-            document.getElementById('web3-section').style.display = 'block';
-        }
-    }
-
-    async function downloadQR(format) {
-        if (!appState.qrCodeInstance) return;
-        const name = `qr-code`;
-        if (format === 'pdf') {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const dataUrl = await appState.qrCodeInstance.toDataUrl('png');
-            doc.addImage(dataUrl, 'PNG', 15, 40, 180, 180);
-            doc.save(`${name}.pdf`);
-        } else {
-            appState.qrCodeInstance.download({ name: name, extension: format });
-        }
-    }
-
-    // --- HISTORY & ANALYTICS ---
-    function renderGenerationHistory() {
-        const container = document.getElementById("generation-history-container");
-        if(!container) return;
-        container.innerHTML = appState.generationHistory.length > 0 ? '' : 'No QR codes generated yet.';
-        appState.generationHistory.forEach(entry => {
-            const div = document.createElement("div");
-            div.className = "history-entry";
-            div.innerHTML = `<div><small>${entry.date} - <b>${entry.type.toUpperCase()}</b></small><br><p style="word-break:break-all; margin:4px 0; font-size:12px;">${(entry.data || '').substring(0, 50)}...</p></div>`;
-            container.appendChild(div);
-        });
-    }
-    function renderAnalyticsPage() {
-        document.getElementById('total-scans').textContent = appState.scanHistory.length;
-        document.getElementById('total-generations').textContent = appState.generationHistory.length;
-        document.getElementById('total-web3-submissions').textContent = appState.web3Submissions.length;
-        const container = document.getElementById('web3-logs-container');
-        container.innerHTML = appState.web3Submissions.length > 0 ? '' : 'No Web3 submissions yet.';
-        appState.web3Submissions.forEach(log => {
-            const div = document.createElement('div');
-            div.className = 'history-entry';
-            div.innerHTML = `<div><small>${log.date}</small><br><b>${log.name}</b> to ${log.endpoint}</div><div>${log.status}</div>`;
-            container.appendChild(div);
-        });
-    }
-
-    // --- WEB3 & CONNECTIVITY ---
-    async function connectWallet() {
-        if (typeof window.ethereum !== 'undefined') {
-            try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                appState.settings.profile.walletAddress = accounts[0];
-                document.getElementById('wallet-address').textContent = `Connected: ${accounts[0].substring(0,6)}...${accounts[0].substring(38)}`;
-                saveState();
-            } catch (error) { console.error('User rejected wallet connection request', error); }
-        } else { alert('MetaMask is not installed.'); }
-    }
-
-    function sendToWeb3() {
-        const statusEl = document.getElementById('web3-status');
-        statusEl.className = '';
-        statusEl.textContent = 'Processing request...';
-        
-        const log = {
-            name: document.getElementById('qr-name').value || 'Untitled QR',
-            date: new Date().toLocaleString(),
-            status: '✅ Simulated Success',
-            endpoint: 'N/A'
-        };
-        
-        if (document.getElementById('shorten-url-toggle').checked) { console.log('[SIMULATE] Calling URL shortener...'); log.endpoint = 'Shortener'; }
-        if (document.getElementById('ipfs-toggle').checked) { console.log('[SIMULATE] Uploading to IPFS...'); log.endpoint = 'IPFS'; }
-        if (document.getElementById('blockchain-log-toggle').checked) { console.log('[SIMULATE] Sending TX to log on blockchain...'); log.endpoint = 'Blockchain'; }
-        if (document.getElementById('webhook-toggle').checked && document.getElementById('webhook-url').value) {
-           console.log(`[SIMULATE] Sending POST to webhook: ${document.getElementById('webhook-url').value}`);
-           log.endpoint = 'Webhook';
-        }
-        
-        appState.web3Submissions.unshift(log);
-        saveState();
-        statusEl.textContent = log.status;
-        statusEl.className = 'success';
-    }
+    // --- HISTORY & ANALYTICS --- (Unchanged)
+    function renderGenerationHistory() { const container = document.getElementById("generation-history-container"); if(!container) return; container.innerHTML = appState.generationHistory.length > 0 ? '' : 'No QR codes generated yet.'; appState.generationHistory.forEach(entry => { const div = document.createElement("div"); div.className = "history-entry"; div.innerHTML = `<div><small>${entry.date} - <b>${entry.type.toUpperCase()}</b></small><br><p style="word-break:break-all; margin:4px 0; font-size:12px;">${(entry.data || '').substring(0, 50)}...</p></div>`; container.appendChild(div); }); }
+    function renderAnalyticsPage() { document.getElementById('total-scans').textContent = appState.scanHistory.length; document.getElementById('total-generations').textContent = appState.generationHistory.length; document.getElementById('total-web3-submissions').textContent = appState.web3Submissions.length; const container = document.getElementById('web3-logs-container'); container.innerHTML = appState.web3Submissions.length > 0 ? '' : 'No Web3 submissions yet.'; appState.web3Submissions.forEach(log => { const div = document.createElement('div'); div.className = 'history-entry'; div.innerHTML = `<div><small>${log.date}</small><br><b>${log.name}</b> to ${log.endpoint}</div><div>${log.status}</div>`; container.appendChild(div); }); }
+    
+    // --- WEB3 & CONNECTIVITY --- (Unchanged)
+    async function connectWallet() { if (typeof window.ethereum !== 'undefined') { try { const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' }); appState.settings.profile.walletAddress = accounts[0]; document.getElementById('wallet-address').textContent = `Connected: ${accounts[0].substring(0,6)}...${accounts[0].substring(38)}`; saveState(); } catch (error) { console.error('User rejected wallet connection request', error); } } else { alert('MetaMask is not installed.'); } }
+    function sendToWeb3() { const statusEl = document.getElementById('web3-status'); statusEl.className = ''; statusEl.textContent = 'Processing request...'; const log = { name: document.getElementById('qr-name').value || 'Untitled QR', date: new Date().toLocaleString(), status: '✅ Simulated Success', endpoint: 'N/A' }; if (document.getElementById('shorten-url-toggle').checked) { console.log('[SIMULATE] Calling URL shortener...'); log.endpoint = 'Shortener'; } if (document.getElementById('ipfs-toggle').checked) { console.log('[SIMULATE] Uploading to IPFS...'); log.endpoint = 'IPFS'; } if (document.getElementById('blockchain-log-toggle').checked) { console.log('[SIMULATE] Sending TX to log on blockchain...'); log.endpoint = 'Blockchain'; } if (document.getElementById('webhook-toggle').checked && document.getElementById('webhook-url').value) { console.log(`[SIMULATE] Sending POST to webhook: ${document.getElementById('webhook-url').value}`); log.endpoint = 'Webhook'; } appState.web3Submissions.unshift(log); saveState(); statusEl.textContent = log.status; statusEl.className = 'success'; }
 
     // --- SETTINGS & PERSONALIZATION ---
     function initSettingsPage() {
+        // Load profile data into form fields
+        document.getElementById('profile-name').value = localStorage.getItem('profileName') || '';
+        document.getElementById('profile-phone').value = localStorage.getItem('profilePhone') || '';
+        document.getElementById('profile-address').value = localStorage.getItem('profileAddress') || '';
+        const avatarSrc = localStorage.getItem('profileAvatar') || 'https://via.placeholder.com/80';
+        document.getElementById('avatar-preview').src = avatarSrc;
+        
+        // Load other settings
         document.getElementById('theme-toggle').checked = appState.settings.theme === 'dark';
         document.getElementById('auto-open-toggle').checked = appState.settings.autoOpenUrls;
         document.getElementById('sound-toggle').checked = appState.settings.soundOnScan;
         document.getElementById('vibrate-toggle').checked = appState.settings.vibrateOnScan;
-        document.getElementById('profile-name').value = appState.settings.profile.name;
         document.getElementById('pin-input-setup').value = appState.settings.pinLock;
         document.getElementById('tip-of-the-day').textContent = appState.settings.tipOfTheDay;
-        if (appState.settings.profile.avatar) document.getElementById('avatar-preview').src = appState.settings.profile.avatar;
         if (appState.settings.profile.walletAddress) document.getElementById('wallet-address').textContent = `Connected: ${appState.settings.profile.walletAddress.substring(0,6)}...${appState.settings.profile.walletAddress.substring(38)}`;
         
         const defaultTypeSelector = document.getElementById('default-qr-type');
@@ -697,65 +536,81 @@
         defaultTypeSelector.innerHTML = generatorTypeSelector.innerHTML;
         defaultTypeSelector.value = appState.settings.defaultQrType;
 
-        document.getElementById('avatar-upload').onchange = saveProfile;
-    }
-    function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        appState.settings.theme = theme;
-    }
-    function toggleSetting(key, element) {
-        appState.settings[key] = element.checked;
-        saveState();
-    }
-    function saveProfile() {
-        appState.settings.profile.name = document.getElementById('profile-name').value;
-        const avatarFile = document.getElementById('avatar-upload').files[0];
-        if (avatarFile) {
-            const reader = new FileReader();
-            reader.onload = e => {
-                appState.settings.profile.avatar = e.target.result;
-                document.getElementById('avatar-preview').src = e.target.result;
-                saveState();
-            };
-            reader.readAsDataURL(avatarFile);
-        } else {
-            saveState();
-        }
-    }
-    function savePin() {
-        const pin = document.getElementById('pin-input-setup').value;
-        if (pin.length === 4 || pin.length === 0) {
-            appState.settings.pinLock = pin;
-            saveState();
-            alert(pin ? 'PIN saved. It will be required on next app load.' : 'PIN removed.');
-        } else {
-            alert('PIN must be 4 digits.');
-        }
-    }
-    function submitFeedback() {
-        const feedback = document.getElementById('feedback-text').value;
-        if (!feedback) return;
-        console.log(`[SIMULATE] Sending feedback to server: "${feedback}"`);
-        alert('Thank you for your feedback!');
-        document.getElementById('feedback-text').value = '';
+        document.getElementById('avatar-upload').onchange = handleAvatarUpload;
     }
 
-    // --- UTILITY FUNCTIONS ---
-    function copyToClipboard(text) { navigator.clipboard.writeText(text); }
-    function toggleFieldset(fieldsetId) {
-        const fieldset = document.getElementById(fieldsetId);
-        const content = fieldset.querySelector('.fieldset-content');
-        const icon = fieldset.querySelector('legend i:last-child');
-        if(content.style.display === 'block') {
-            content.style.display = 'none';
-            icon.classList.remove('fa-chevron-up');
-            icon.classList.add('fa-chevron-down');
-        } else {
-            content.style.display = 'block';
-            icon.classList.remove('fa-chevron-down');
-            icon.classList.add('fa-chevron-up');
+    function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); appState.settings.theme = theme; saveState(); }
+    function toggleSetting(key, element) { appState.settings[key] = element.checked; saveState(); }
+    
+    // INTEGRATED: Avatar upload handler
+    function handleAvatarUpload(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const imageData = event.target.result;
+                localStorage.setItem('profileAvatar', imageData);
+                document.getElementById('avatar-preview').src = imageData;
+                saveState(); // Save the new avatar link to the main state file
+            };
+            reader.readAsDataURL(file);
         }
     }
+
+    // INTEGRATED: Web3Forms submission logic
+    async function handleFormSubmission(e) {
+        if (e.target.id !== 'profileForm') return; // Only act on the profile form
+        e.preventDefault();
+        
+        const formResult = document.getElementById('form-result');
+        const saveBtn = e.target.querySelector('button[type="submit"]');
+        saveBtn.disabled = true;
+        formResult.textContent = "Submitting...";
+        
+        const name = document.getElementById('profile-name').value;
+        const phone = document.getElementById('profile-phone').value;
+        const address = document.getElementById('profile-address').value;
+
+        // 1. Save to Local Storage Immediately
+        localStorage.setItem('profileName', name);
+        localStorage.setItem('profilePhone', phone);
+        localStorage.setItem('profileAddress', address);
+        
+        // 2. Prepare and Send to Web3Forms
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('address', address);
+        formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+        formData.append('subject', 'New Profile from QR App');
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+            const result = await response.json();
+            if (result.success) {
+                formResult.style.color = 'var(--success-color)';
+                formResult.textContent = "Profile saved and submitted!";
+                saveState(); // Update the main state file after successful submission
+            } else {
+                formResult.style.color = 'var(--danger-color)';
+                formResult.textContent = result.message || "Submission failed.";
+            }
+        } catch (error) {
+            formResult.style.color = 'var(--danger-color)';
+            formResult.textContent = "Network error. Profile saved locally.";
+            console.error("Submission Error:", error);
+        } finally {
+            saveBtn.disabled = false;
+            setTimeout(() => { if (formResult) formResult.textContent = ''; }, 3000);
+        }
+    }
+
+    function savePin() { const pin = document.getElementById('pin-input-setup').value; if (pin.length === 4 || pin.length === 0) { appState.settings.pinLock = pin; saveState(); alert(pin ? 'PIN saved.' : 'PIN removed.'); } else { alert('PIN must be 4 digits.'); } }
+    function submitFeedback() { const feedback = document.getElementById('feedback-text').value; if (!feedback) return; console.log(`[SIMULATE] Sending feedback: "${feedback}"`); alert('Thank you for your feedback!'); document.getElementById('feedback-text').value = ''; }
+    
+    // --- UTILITY FUNCTIONS ---
+    function copyToClipboard(text) { navigator.clipboard.writeText(text); }
+    function toggleFieldset(fieldsetId) { const fieldset = document.getElementById(fieldsetId); const content = fieldset.querySelector('.fieldset-content'); const icon = fieldset.querySelector('legend i:last-child'); if(content.style.display === 'block') { content.style.display = 'none'; icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } else { content.style.display = 'block'; icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } }
     </script>
 </body>
 </html>
